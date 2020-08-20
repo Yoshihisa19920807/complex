@@ -14,10 +14,9 @@ after_success:
   - docker build -t yokada0807/muilti-server ./server
   - docker build -t yokada0807/muilti-worker ./worker
   # Log in to the docker CLI
-  echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
   - docker push yokada0807/multi-client
   - docker push yokada0807/multi-nginx
   - docker push yokada0807/multi-server
   - docker push yokada0807/multi-worker
-  
