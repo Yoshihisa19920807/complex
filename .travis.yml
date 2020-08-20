@@ -3,7 +3,7 @@ services:
  - docker
 
 before_install:
- - docker build -t yokada0807/docker-test -f ./client/Dockerfile.dev ./client
+ - docker build -t yokada0807/react-test -f ./client/Dockerfile.dev ./client
 
 script:
  - docker run yokada0807/react-test npm test -- --coverage
