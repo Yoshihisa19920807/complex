@@ -3,21 +3,21 @@ services:
  - docker
 
 before_install:
- - docker build -t yokada0807/react-test -f ./client/Dockerfile.dev ./client
+ - docker build -t yoshi0807/react-test -f ./client/Dockerfile.dev ./client
 
 script:
- - docker run -e CI=true yokada0807/react-test npm test -- --coverage
+ - docker run -e CI=true yoshi0807/react-test npm test -- --coverage
 
 after_success:
-  - docker build -t yokada0807/muilti-client ./client
-  - docker build -t yokada0807/muilti-nginx ./nginx
-  - docker build -t yokada0807/muilti-server ./server
-  - docker build -t yokada0807/muilti-worker ./worker
+  - docker build -t yoshi0807/muilti-client ./client
+  - docker build -t yoshi0807/muilti-nginx ./nginx
+  - docker build -t yoshi0807/muilti-server ./server
+  - docker build -t yoshi0807/muilti-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push yokada0807/multi-client
-  - docker push yokada0807/multi-nginx
-  - docker push yokada0807/multi-server
-  - docker push yokada0807/multi-worker
+  - docker push yoshi0807/multi-client
+  - docker push yoshi0807/multi-nginx
+  - docker push yoshi0807/multi-server
+  - docker push yoshi0807/multi-worker
   
