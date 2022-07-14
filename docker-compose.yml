@@ -5,6 +5,9 @@ services:
     mem_limit: 128m
     hostname: client
   server:
+    depends_on:
+      - postgres
+      - redis
     image: "yoshi0807/multi-server-10-14"
     mem_limit: 128m
     hostname: api
@@ -24,6 +27,9 @@ services:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
+    depends_on:
+      - api
+      - client
     image: "yoshi0807/multi-nginx-10-14"
     mem_limit: 128m
     hostname: nginx
